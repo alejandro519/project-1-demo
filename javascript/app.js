@@ -47,7 +47,6 @@ database.ref().on("child_added", function(snapshot) {
 
   } else if (!snapshot.exists()) {
     console.log("No events to display");
-    database.ref().off("child_added");
   }
 });
 
