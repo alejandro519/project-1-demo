@@ -44,6 +44,10 @@ database.ref().on("child_added", function(snapshot) {
         time: snapshot.val().time,
       };
       events.push(newEvent);
+      console.log(events);
+      // call display function
+     display();
+
 
   } else if (!snapshot.exists()) {
     console.log("No events to display");
@@ -55,7 +59,8 @@ $("#search-btn").on("click", getEvents);
 
 //==============================//
 
-function getEvents () {
+function getEvents (event) {
+  event.preventDefault()
   
   searchDate = moment().format(searchDateFormat);
   console.log(searchDate, lastSearch);
@@ -92,6 +97,7 @@ function getTicketMasterRequest (type, key, city) {
         };
 
         events.push(newEvent);
+        console.log(events);
         database.ref("/search-date").set({
           searchDate: moment().format(searchDateFormat)
         });
@@ -119,6 +125,7 @@ function getTicketMasterRequest (type, key, city) {
           };
   
           events.push(newEvent);
+          console.log(events);
           database.ref().push(newEvent);
         }
 
@@ -143,7 +150,9 @@ function getTicketMasterRequest (type, key, city) {
                 };
         
                 events.push(newEvent);
+                console.log(events);
                 database.ref().push(newEvent);
+              
               }
           }
         });
@@ -154,6 +163,44 @@ function getTicketMasterRequest (type, key, city) {
     
 }
 
+function display(){
+  //console.log("-----");
+  //console.log(events.length);
+  //console.log("-----");
+
+   
+var ievents =[{ date: "2019-12-13",
+info: "A very special performance for families with very young children. Toddlers under 4 are welcome! At just the right length, this one hour show is perfect for introducing the joy of dance to children of all ages. All children over 12 months old must have a ticket with an assigned seat. $5.00 Lap Tickets will be available at the Theatre Ticket Office the day of the show for parents wishing to bring any child under 12 months of age to this Two week delivery delay, to be lifted 6/17",
+name: "California Ballet Presents The Nutcracker Family Friendly Performance",
+time: "14:00:00",
+venue: "San Diego Civic Theatre"}];
+
+if(ievents.length === 0){
+  var noResultsMsg = $("<p>");
+  console.log("No Results to Display");
+  $("#result-section").append(noResultsMsg.text("No Results to Display"));
+
+} else {
+  for(var s=0; s<1; s++) {
+    console.log("display event"+ ievents[s].date, ievents[s].info, ievents[s].name, ievents[s].time, ievents[s].venue);
+    console.log(s);
+    var eventDate= $("<p>");
+    eventDate.text("Date : "+ ievents[s].date);
+    var eventInfo = $("<p>");
+    eventInfo.text("Info : "+ ievents[s].info);
+    var eventName = $("<p>");
+    eventName.text("Name : "+ ievents[s].name);
+    var eventTime = $("<p>");
+    eventTime.text("Time : "+ ievents[s].time);
+    var eventVenue = $("<p>");
+    eventVenue.text("Venue"+ ievents[s].venue);
+    var newDiv = $("<div>");
+    newDiv.append(eventDate,eventInfo,eventName,eventTime,eventVenue);
+    console.log ("new div added" + newDiv);
+    $("#result-section").append(newDiv);
+  }
+}
+}
 // NOT CALLED! NEEDS AUTHENTICATION
 function getEvenbrite () {
   var eventBriteURL = "https://www.eventbriteapi.com/v3/users/me/?token=P2UFY6OEXHWORQKQFMRJE7AQZPMLMEL5DRUT6ALTPZ7ELIITPE";
