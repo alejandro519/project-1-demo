@@ -1,6 +1,6 @@
 
 // Get click event for #search-btn and generate a function
-var searchCity = "Dallas"; //placeholder
+var searchCity = $("#search-input").val();
 
 // Events from API requests are gonna be stored in this array as objects
 var events = [];
@@ -9,7 +9,7 @@ var sports = [];
 
 $("#search-btn").on("click", function() {
   event.preventDefault();
-  console.log("SOMETHING");
+
   var ticketMasterURL = "http://app.ticketmaster.com/discovery/v2/events.json?&size=200&city=" + searchCity + "&apikey=4tfR2LDAXpAcyulcEgARYYEfWZTLHCUQ";
   
   //response._embedded.events[i].ckassifications.segment.name
