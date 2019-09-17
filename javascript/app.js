@@ -39,6 +39,7 @@ $("#search-btn").on("click", function() {
             newEvent.imageURL = response._embedded.events[i].images[j].url;
           }
         }
+        
         if (response._embedded.events[i].classifications[0].segment.name === "Music") {
           console.log("is music");
           music.push(newEvent);
