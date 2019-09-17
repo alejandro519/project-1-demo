@@ -1,91 +1,19 @@
-// Configure database
-var firebaseConfig = {
-  apiKey: "AIzaSyBYu86lcd8iV7dFoYqD4W9a7G8xgX2pJd8",
-  authDomain: "project-1-a5ac9.firebaseapp.com",
-  databaseURL: "https://project-1-a5ac9.firebaseio.com",
-  projectId: "project-1-a5ac9",
-  storageBucket: "",
-  messagingSenderId: "160952004435",
-  appId: "1:160952004435:web:27f37a971794bc3bfcfba6"
-};
-
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-var database = firebase.database();
 
 // Get click event for #search-btn and generate a function
-var searchCity = "San Diego"; //placeholder
+var searchCity = "Los Angeles"; //placeholder
 
 // Events from API requests are gonna be stored in this array as objects
 var events = [];
-var searchDateFormat = "MM/DD/YY";
-var lastSearch;
-var searchDate;
 
-database.ref("/search-date").once("value", function(datesnap) {
-  if (datesnap.exists()) {
-    lastSearch = datesnap.val().searchDate;
-    console.log(lastSearch);
-
-  }
-});
-
-database.ref().on("child_added", function(snapshot) {
-
-  if (snapshot.exists()) {
-
-      console.log("downloading from database");
-      
-      var newEvent = {
-        name: snapshot.val().name,
-        venue: snapshot.val().venue,
-        info: snapshot.val().info,
-        date: snapshot.val().date,
-        time: snapshot.val().time,
-      };
-      events.push(newEvent);
-      console.log(events);
-      // call display function
-     display();
-
-
-  } else if (!snapshot.exists()) {
-    console.log("No events to display");
-    database.ref().off("child_added");
-  }
-});
-
-$("#search-btn").on("click", getEvents);
-
-//==============================//
-
-function getEvents (event) {
-  event.preventDefault()
+$("#search-btn").on("click", function() {
   
-  searchDate = moment().format(searchDateFormat);
-  console.log(searchDate, lastSearch);
-
-  if (searchDate !== lastSearch) {
-    console.log("different dates, remove data, get API request!");
-    database.ref().remove();
-    getTicketMasterRequest("events", "keyword=family friendly", searchCity);
-  } else if (searchDate === lastSearch) {
-    console.log("Same date, use elements stored in the array");
-  }
-      
-}
-
-function getTicketMasterRequest (type, key, city) {
-  
-  var ticketMasterURL = "http://app.ticketmaster.com/discovery/v2/" + type + ".json?" + key + "&size=200&city=" + city + "&apikey=4tfR2LDAXpAcyulcEgARYYEfWZTLHCUQ";
+  var ticketMasterURL = "http://app.ticketmaster.com/discovery/v2/events.json?includeFamily=only&size=200&city=" + searchCity + "&apikey=4tfR2LDAXpAcyulcEgARYYEfWZTLHCUQ";
   
   $.ajax({
     url: ticketMasterURL,
     method: "GET"
   }).then(function(response) {
-    console.log(response);
-    if (type === "events") {
-      console.log("searching for " +  type + " and " + key);
+      console.log("searching for events in " + searchCity);
       console.log(response._embedded.events.length + "responses");
       for (var i = 0;  i < response._embedded.events.length ; i++) {
         var newEvent = {
@@ -95,73 +23,12 @@ function getTicketMasterRequest (type, key, city) {
           date : response._embedded.events[i].dates.start.localDate,
           time : response._embedded.events[i].dates.start.localTime,
         };
-
         events.push(newEvent);
-        console.log(events);
-        database.ref("/search-date").set({
-          searchDate: moment().format(searchDateFormat)
-        });
-        database.ref().push(newEvent);
       }
-    }
+    });
 
-    key = "keyword=children";
-
-    ticketMasterURL = "http://app.ticketmaster.com/discovery/v2/" + type + ".json?" + key + "&size=200&city=" + city + "&apikey=4tfR2LDAXpAcyulcEgARYYEfWZTLHCUQ";
-    console.log("about to make request 2");
-    $.ajax({
-        url: ticketMasterURL,
-        method: "GET"
-      }).then(function(response) {
-        console.log("searching for " +  type + " and " + key);
-        
-        for (var i = 0;  i < response._embedded.events.length ; i++) {
-          var newEvent = {
-            name : response._embedded.events[i].name,
-            venue : response._embedded.events[i]._embedded.venues[0].name,
-            info : response._embedded.events[i].info,
-            date : response._embedded.events[i].dates.start.localDate,
-            time : response._embedded.events[i].dates.start.localTime,
-          };
-  
-          events.push(newEvent);
-          console.log(events);
-          database.ref().push(newEvent);
-        }
-
-        key = "includeFamily=yes";
-
-        ticketMasterURL = "http://app.ticketmaster.com/discovery/v2/" + type + ".json?" + key + "&size=200&city=" + city + "&apikey=4tfR2LDAXpAcyulcEgARYYEfWZTLHCUQ";
-        
-        $.ajax({
-          url: ticketMasterURL,
-          method: "GET"
-        }).then(function(response) {
-          console.log("searching for" +  type + " and " + key)
-
-          for (var i = 0;  i < response._embedded.events.length ; i++) {
-              if (response._embedded.events[i].classifications[0].family) {
-                var newEvent = {
-                  name : response._embedded.events[i].name,
-                  venue : response._embedded.events[i]._embedded.venues[0].name,
-                  info : response._embedded.events[i].info,
-                  date : response._embedded.events[i].dates.start.localDate,
-                  time : response._embedded.events[i].dates.start.localTime,
-                };
-        
-                events.push(newEvent);
-                console.log(events);
-                database.ref().push(newEvent);
-              
-              }
-          }
-        });
-
-      });
-
-  });
-    
-}
+    display();
+});
 
 function display(){
   //console.log("-----");
@@ -169,48 +36,45 @@ function display(){
   //console.log("-----");
 
    
-var ievents =[{ date: "2019-12-13",
-info: "A very special performance for families with very young children. Toddlers under 4 are welcome! At just the right length, this one hour show is perfect for introducing the joy of dance to children of all ages. All children over 12 months old must have a ticket with an assigned seat. $5.00 Lap Tickets will be available at the Theatre Ticket Office the day of the show for parents wishing to bring any child under 12 months of age to this Two week delivery delay, to be lifted 6/17",
-name: "California Ballet Presents The Nutcracker Family Friendly Performance",
-time: "14:00:00",
-venue: "San Diego Civic Theatre"}];
+// var ievents =[{ date: "2019-12-13",
+// info: "A very special performance for families with very young children. Toddlers under 4 are welcome! At just the right length, this one hour show is perfect for introducing the joy of dance to children of all ages. All children over 12 months old must have a ticket with an assigned seat. $5.00 Lap Tickets will be available at the Theatre Ticket Office the day of the show for parents wishing to bring any child under 12 months of age to this Two week delivery delay, to be lifted 6/17",
+// name: "California Ballet Presents The Nutcracker Family Friendly Performance",
+// time: "14:00:00",
+// venue: "San Diego Civic Theatre"}];
 
-if(ievents.length === 0){
+if(events.length === 0){
   var noResultsMsg = $("<p>");
   console.log("No Results to Display");
   $("#result-section").append(noResultsMsg.text("No Results to Display"));
 
 } else {
   for(var s=0; s<1; s++) {
-    console.log("display event"+ ievents[s].date, ievents[s].info, ievents[s].name, ievents[s].time, ievents[s].venue);
+    console.log("display event"+ events[s].date, events[s].info, events[s].name, events[s].time, events[s].venue);
     console.log(s);
-    var eventDate= $("<p>");
-    eventDate.text("Date : "+ ievents[s].date);
-    var eventInfo = $("<p>");
-    eventInfo.text("Info : "+ ievents[s].info);
-    var eventName = $("<p>");
-    eventName.text("Name : "+ ievents[s].name);
-    var eventTime = $("<p>");
-    eventTime.text("Time : "+ ievents[s].time);
-    var eventVenue = $("<p>");
-    eventVenue.text("Venue"+ ievents[s].venue);
-    var newDiv = $("<div>");
-    newDiv.append(eventDate,eventInfo,eventName,eventTime,eventVenue);
-    console.log ("new div added" + newDiv);
-    $("#result-section").append(newDiv);
+    var eventDate= $("#date-result");
+    eventDate.text(events[s].date);
+    var eventTime= $("#time-result");
+    eventTime.text(events[s].date);
+    
+    var eventVenue = $("#location-result");
+    eventVenue.text(events[s].venue);
+    var newCard = $("<div>");
+    newCard.append(eventDate,eventTime,eventVenue);
+    console.log ("new div added" + newCard);
+    $("#result-section").append(newCard);
   }
 }
 }
 // NOT CALLED! NEEDS AUTHENTICATION
-function getEvenbrite () {
-  var eventBriteURL = "https://www.eventbriteapi.com/v3/users/me/?token=P2UFY6OEXHWORQKQFMRJE7AQZPMLMEL5DRUT6ALTPZ7ELIITPE";
-    // Generate a search request from the API using ajax... then...
+// function getEvenbrite () {
+//   var eventBriteURL = "https://www.eventbriteapi.com/v3/users/me/?token=P2UFY6OEXHWORQKQFMRJE7AQZPMLMEL5DRUT6ALTPZ7ELIITPE";
+//     // Generate a search request from the API using ajax... then...
 
-      $.ajax({
-        url: eventBriteURL,
-        method: "GET"
-      }).then(function(response) {
-        console.log(response);
+//       $.ajax({
+//         url: eventBriteURL,
+//         method: "GET"
+//       }).then(function(response) {
+//         console.log(response);
         
-      });
-}
+//       });
+// }
