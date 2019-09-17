@@ -1,21 +1,16 @@
 
 // Get click event for #search-btn and generate a function
-var searchCity = $("#search-input").val();
 
 // Events from API requests are gonna be stored in this array as objects
-var events = [];
+
 var music = [];
 var sports = [];
 
 $("#search-btn").on("click", function() {
   event.preventDefault();
 
+  var searchCity = $("#search-input").val();
   var ticketMasterURL = "http://app.ticketmaster.com/discovery/v2/events.json?&size=200&city=" + searchCity + "&apikey=4tfR2LDAXpAcyulcEgARYYEfWZTLHCUQ";
-  
-
-  event.preventDefault();
-  var ticketMasterURL = "http://app.ticketmaster.com/discovery/v2/events.json?includeFamily=only&size=200&city=" + searchCity + "&apikey=4tfR2LDAXpAcyulcEgARYYEfWZTLHCUQ";
-  
 
   $.ajax({
     url: ticketMasterURL,
@@ -42,29 +37,25 @@ $("#search-btn").on("click", function() {
         if (response._embedded.events[i].classifications[0].segment.name === "Music") {
           console.log("IS MUSIC");
           music.push(newEvent);
-        } else if (response._embedded.events[i].classifications[0].segment.name === "Sports") {
+          display(music, "Music");
+        } 
+        
+        if (response._embedded.events[i].classifications[0].segment.name === "Sports") {
           console.log("is sports");
           sports.push(newEvent);
+          display(sports, "Sports");
+          
         }
       }
       
     });
 
-    display();
+    
 });
 
 
-function display(){
+function display(events, type){
   console.log("-----");
-  //console.log(events.length);
-  //console.log("-----");
-
-   
-//  var ievents =[{ date: "2019-12-13",
-//  info: "A very special performance for families with very young children. Toddlers under 4 are welcome! At just the right length, this one hour show is perfect for introducing the joy of dance to children of all ages. All children over 12 months old must have a ticket with an assigned seat. $5.00 Lap Tickets will be available at the Theatre Ticket Office the day of the show for parents wishing to bring any child under 12 months of age to this Two week delivery delay, to be lifted 6/17",
-//  name: "California Ballet Presents The Nutcracker Family Friendly Performance",
-//  time: "14:00:00",
-//  venue: "San Diego Civic Theatre"}];
 
 if(events.length === 0){
   var noResultsMsg = $("<p>");
@@ -72,9 +63,8 @@ if(events.length === 0){
   $("#result-section").append(noResultsMsg.text("No Results to Display"));
 
 } else {
-  for(var s=0; s<events.length; s++) {
-    console.log("display event"+ events[s].date, events[s].info, events[s].name, events[s].time, events[s].venue);
-    console.log(s);
+  for(var s=0; s < events.length; s++) {
+    
     var eventImage = $("<img class='card-img-top'>");// add source and alttext
     eventImage.attr("src",events[s].image);
     eventImage.attr("alt","image text");
@@ -93,22 +83,14 @@ if(events.length === 0){
     var newCard = $("<div class='card' style='width: 18rem;'>");
     //newCard.attr( );
     newCard.append(eventImage,newUl);
-    console.log ("new div added" + newCard);
-    $("#result-section").append(newCard);
+
+    if (type === "Music"){
+      $("#music-results").append(newCard);
+    } else if (type === "Sports") {
+      $("#sports-results").append(newCard);
+    }
+    
   }
 }
 }
-// NOT CALLED! NEEDS AUTHENTICATION
-// function getEvenbrite () {
-//   var eventBriteURL = "https://www.eventbriteapi.com/v3/users/me/?token=P2UFY6OEXHWORQKQFMRJE7AQZPMLMEL5DRUT6ALTPZ7ELIITPE";
-//     // Generate a search request from the API using ajax... then...
-
-//       $.ajax({
-//         url: eventBriteURL,
-//         method: "GET"
-//       }).then(function(response) {
-//         console.log(response);
-        
-//       });
-// }
 

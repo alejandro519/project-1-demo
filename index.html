@@ -59,19 +59,31 @@
   </div>
   </div>
   </div>
+
   <!-- Results from the even search will dump here -->
   <div class="container">
     <!-- Results from the even search will dump here -->
     <div class="main results mt-4" id="result-section">
-      <!--Sumana - moved the card body div above the image to make it independent of dynamic cards  -->
-      <div class="card-body bg-light">
-        <h5 class="card-title">Search Results</h5>
-        <p class="card-text">See your search results below!</p>
-      </div>
 
-      <div class="card" style="width: 18rem;">
+      <!--Sumana - moved the card body div above the image to make it independent of dynamic cards  -->
+        <div class="card-body bg-light" id="music-results">
+          <h5 class="card-title">Music Results</h5>
+          <p class="card-text">See your search results below!</p>
+        </div>
+
+          <!--Sumana - moved the card body div above the image to make it independent of dynamic cards  -->
+          <div class="card-body bg-light" id="sports-results">
+            <h5 class="card-title">Sports Results</h5>
+            <p class="card-text">See your search results below!</p>
+          </div>
+
+  
+
+    
+    
+      <!-- <div class="card" style="width: 18rem;">
         <img src="" class="card-img-top" alt="">
-        <!--Commented out the structure of the card, now we see only results and no more place holders  -->
+        Commented out the structure of the card, now we see only results and no more place holders 
         <!-- <ul class="list-group list-group-flush"> -->
         <!-- <li class="list-group-item"></li>
         <li class="list-group-item"></li>
@@ -83,10 +95,10 @@
       <li class="list-group-item" id="date-result"></li>
       <li class="list-group-item" id="time-result"></li>
     </ul> -->
-        <div class="main results mt-4" id="result-section">
+        <!-- <div class="main results mt-4" id="result-section">
           <div class="card" style="width: 18rem;">
             <div class="card-body bg-light">
-              <img src="../images/demo" class="card-img-top" alt="placeholder">
+              <img src="/images/demo" class="card-img-top" alt="placeholder">
               <h5 class="card-title">Result #1</h5>
               <p class="card-text">Event Title</p>
             </div>
@@ -101,16 +113,16 @@
               <a href="#" class="card-link">Card link</a>
               <a href="#" class="card-link">Another link</a>
             </div>
-          </div>
+          </div> --> -->
 
           <!-- the goal is for this to be hidden until the user
         clicks search, after search is clicked a preceding time
         the search information will be stacked with an h3 of what was searched -->
-        </div>
+    </div>
         <!--  -->
 
         <button type="reset" id="reset-btn" class="btn btn-danger mt-3">Reset Search Results</button>
-      </div>
+  </div>
 
 
 
