@@ -6,21 +6,35 @@ body{
     background-position: center;
 }
 .container{
-    width: 80%;
+    
 }
 .jumbotron{
+
+    padding-top: 10px;
+    padding-left: 10%;
+    padding-right: 10%;
     background: none;
-    padding: 15px;
-    border: double;
-    border-radius: 10px;
-    margin-top: 10px;
+    margin: 0px;
+
+    border-bottom: solid;
     box-shadow: 2px 2px 4px #000000;
+    align-content: center;
+    
+}
+#search-term{
+    width: 45%;
+    margin-top: 20px;
+    padding: 10px;
+    margin-left: 0px;
+
 
 }
+
 .main{
     margin: auto;
     background: none;
     box-shadow: 2px 2px 4px #000000;
+
 }
 #title{
 font-family: 'Dancing Script', cursive;
@@ -30,19 +44,21 @@ font-size: 65px;
 #directions{
 font-family: 'Lato', sans-serif;
 font-size: 20px;
-font-weight: bold;
+font-weight: bolder;
+padding-top: 5px;
+padding-left: 10%;
+padding-right: 10%;
+text-align: center;
 
 }
 #back{
-background-image: linear-gradient(to bottom right, #bdb9b9, #76ffff);    border: none;
-    border-radius: 10px;
-    padding: 10px;
-    box-shadow: 2px 2px 4px #000000;
+background-color: rgba(179, 255, 0, 0.507);
+border: solid;
+border-radius: 10px;
+padding: 0px;
+box-shadow: 2px 2px 4px #000000;
+}
 
-}
-.card-head-style{
-    background-color: #ebebeb;
-}
 #results-section{
 
 }
