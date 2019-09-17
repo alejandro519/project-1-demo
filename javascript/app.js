@@ -1,9 +1,11 @@
 
 // Get click event for #search-btn and generate a function
-var searchCity = "Los Angeles"; //placeholder
+var searchCity = $("#search-input").val();
 
 // Events from API requests are gonna be stored in this array as objects
 var events = [];
+var music = [];
+var sports = [];
 
 $("#search-btn").on("click", function () {
 
@@ -84,3 +86,4 @@ function display() {
 
 //       });
 // }
+
