@@ -15,6 +15,7 @@ $("#search-btn").on("click", function() {
   $.ajax({
     url: ticketMasterURL,
     method: "GET"
+
   }).then(function(response) {
       console.log("searching for events in " + searchCity);
       console.log(response);
@@ -49,7 +50,6 @@ $("#search-btn").on("click", function() {
       }
       
     });
-
     
 });
 
