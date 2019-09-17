@@ -36,7 +36,7 @@ $("#search-btn").on("click", function() {
           }
         }
         if (response._embedded.events[i].classifications[0].segment.name === "Music") {
-          console.log("IS MUSIC");
+          console.log("is music");
           music.push(newEvent);
           display(music, "Music");
         } 
@@ -46,11 +46,12 @@ $("#search-btn").on("click", function() {
           sports.push(newEvent);
           display(sports, "Sports");
           
+
         }
       }
       
     });
-    
+
 });
 
 
