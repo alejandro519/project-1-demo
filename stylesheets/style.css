@@ -1,12 +1,45 @@
+body{
+    background-color: #96aef0;
+    background-image: url("../images/main.png");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 .container{
     width: 70%;
 }
 .jumbotron{
-    /* background-image: url("../images/amusement-park-crop.jpg");
-    background-position: center bottom; */
-    background-color:#b1fff9;
+    background: none;
+    padding: 15px;
+    border: double;
+    border-radius: 10px;
+    margin-top: 10px;
 }
 .main{
     width: 70%;
     margin: auto;
+}
+#title{
+font-family: 'Lobster', cursive;
+font-size: 75px;
+
+}
+#fff{
+font-family: 'Julius Sans One', sans-serif;
+font-size: 35px;
+font-weight: bolder;
+
+}
+#directions{
+font-family: 'Julius Sans One', sans-serif;
+font-size: 20px;
+font-weight: bold;
+
+}
+#back{
+    background-color: #dddada;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+
 }
