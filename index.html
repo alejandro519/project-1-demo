@@ -54,17 +54,22 @@
   </div>
 
   <!-- Results from the even search will dump here -->
-  <div class="main-results">
-
-    <div scope="row" id="result-section">
-      
-      <!-- the goal is for this to be hidden until the user
+  <div class="main results mt-4" id="result-section">
+        <div class="card" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body bg-light">
+            <h5 class="card-title">Search Results</h5>
+            <p class="card-text">See your search results below!</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" id="location-result"></li>
+            <li class="list-group-item" id="date-result"></li>
+            <li class="list-group-item" id="time-result"></li>
+          </ul>
+        </div>
+        <!-- the goal is for this to be hidden until the user
           clicks search, after search is clicked a preceding time
           the search information will be stacked with an h3 of what was searched -->
-      <div>
-
-      </div>
-    </div>
   </div>
   <!--  -->
 

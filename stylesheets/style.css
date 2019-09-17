@@ -2,6 +2,8 @@
     width: 70%;
 }
 .jumbotron{
+    /* background-image: url("../images/amusement-park-crop.jpg");
+    background-position: center bottom; */
     background-color:#b1fff9;
 }
 .main{
