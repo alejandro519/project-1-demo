@@ -35,9 +35,14 @@ $("#search-btn").on("click", function() {
             newEvent.imageURL = response._embedded.events[i].images[j].url;
           }
         }
-        events.push(newEvent);
+        if (response._embedded.events[i].classifications[0].segment.name === "Music") {
+          console.log("IS MUSIC");
+          music.push(newEvent);
+        } else if (response._embedded.events[i].classifications[0].segment.name === "Sports") {
+          console.log("is sports");
+          sports.push(newEvent);
+        }
       }
-      
       
     });
 });
