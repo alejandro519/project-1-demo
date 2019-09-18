@@ -42,7 +42,6 @@
 
         <form>
           <div id="search-term">
-
             <div class="form-group">
               <label for="Search Term">Search</label>
               <input type="text" class="form-control" id="search-input" placeholder="Los Angeles">
@@ -51,25 +50,37 @@
           </div>
 
       </div>
-
-
       </form>
 
     </div>
   </div>
   </div>
   </div>
+
   <!-- Results from the even search will dump here -->
 <<<<<<< HEAD
 =======
 
+<<<<<<< HEAD
 >>>>>>> b990a0cd3f6555d033ed392c879ef82d60f867ee
   <div class="main results mt-4" id="result-section">
      <!--Sumana - moved the card body div above the image to make it independent of dynamic cards  -->
     <div class="card-body bg-light">
           <h5 class="card-title">Search Results</h5>
+=======
+
+  <div class="container">
+    <!-- Results from the even search will dump here -->
+    <div class="main results mt-4" id="result-section">
+
+      <!--Sumana - moved the card body div above the image to make it independent of dynamic cards  -->
+        <div class="card-body bg-light" style="width: 30rem; float:left;">
+          <h5 class="card-title">Music Results</h5>
+>>>>>>> 3d6157bd17e6f3c99e0aa80dcdc305b8285d3338
           <p class="card-text">See your search results below!</p>
+          <div id="music-results"></div>
         </div>
+<<<<<<< HEAD
         
         <div class="card" style="width: 18rem;">
           <img src="" class="card-img-top" alt="">
@@ -90,49 +101,21 @@
 
 >>>>>>> b990a0cd3f6555d033ed392c879ef82d60f867ee
       </div>
+=======
+>>>>>>> 3d6157bd17e6f3c99e0aa80dcdc305b8285d3338
 
-      <div class="card" style="width: 18rem;">
-        <img src="" class="card-img-top" alt="">
-        <!--Commented out the structure of the card, now we see only results and no more place holders  -->
-        <!-- <ul class="list-group list-group-flush"> -->
-        <!-- <li class="list-group-item"></li>
-        <li class="list-group-item"></li>
-        <li class="list-group-item"></li>
-      </ul>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item" id="location-result"></li>
-      <li class="list-group-item" id="date-result"></li>
-      <li class="list-group-item" id="time-result"></li>
-    </ul> -->
-        <div class="main results mt-4" id="result-section">
-          <div class="card" style="width: 18rem;">
-            <div class="card-body bg-light">
-              <img src="../images/demo" class="card-img-top" alt="placeholder">
-              <h5 class="card-title">Result #1</h5>
-              <p class="card-text">Event Title</p>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item" id="location-result"></li>3.
-              <li class="list-group-item" id="date-result"></li>
-              <li class="list-group-item" id="time-result"></li>
-              <li class="list-group-item" id="link-result"></li>
-
-            </ul>
-            <div class="card-body">
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
+          <!--Sumana - moved the card body div above the image to make it independent of dynamic cards  -->
+          <div class="card-body bg-light"style="width: 30rem; float:left;">
+            <h5 class="card-title">Sports Results</h5>
+            <p class="card-text">See your search results below!</p>
+            <div id="sports-results"></div>
           </div>
 
-          <!-- the goal is for this to be hidden until the user
-        clicks search, after search is clicked a preceding time
-        the search information will be stacked with an h3 of what was searched -->
-        </div>
+    </div>
         <!--  -->
 
         <button type="reset" id="reset-btn" class="btn btn-danger mt-3">Reset Search Results</button>
-      </div>
+
 
 
 

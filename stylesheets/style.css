@@ -6,7 +6,6 @@ body{
     background-position: center;
 }
 .container{
-    
 }
 .jumbotron{
 
@@ -60,5 +59,9 @@ box-shadow: 2px 2px 4px #000000;
 }
 
 #results-section{
+
+}
+#reset-btn{
+    margin: 10px;
 
 }
