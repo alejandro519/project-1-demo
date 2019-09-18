@@ -79,7 +79,7 @@ function display(events, type) {
   var eventImage = $("<img class='card-img-top '>");
   eventImage.attr("src", events.imageURL);
   eventImage.attr("alt", "image text");
-  var eventName = $("<li class='list-group-item li-card>");
+  var eventName = $("<li class='list-group-item li-card'>");
   eventName.text(events.name);
   var eventDate = $("<li class='list-group-item li-card'>");
   eventDate.text(events.date);
@@ -92,7 +92,7 @@ function display(events, type) {
   // var eventURL = $("<li class='list-group-item'>");
   // eventURL.text(events.link);
   // eventURL.html("<a href='" + events.link + "/>" );
-  var eventTOO = (`<a class='link-result' href=${events.link}>Learn More!</a>`);
+  var eventTOO = (`<a class='link-result' href=${events.link} target='_blank'>Learn More!</a>`);
 
   var newUl = $("<ul list-group>");
   newUl.append(eventName, eventDate, eventTime, eventVenue, eventTOO);
