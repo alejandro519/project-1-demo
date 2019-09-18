@@ -62,23 +62,28 @@ $("#search-btn").on("click", function() {
 function display(events, type){
   console.log("-----");
     
-    var eventImage = $("<img class='card-img-top'>");// add source and alttext
+    var eventImage = $("<img class='card-img-top'>");
     eventImage.attr("src",events.imageURL);
     eventImage.attr("alt","image text");
     var eventName = $("<li class='list-group-item'>");
     eventName.text(events.name);
-    var eventInfo = $("<li class='list-group-item'>");
-    eventInfo.text(events.info);
     var eventDate= $("<li class='list-group-item'>");
     eventDate.text(events.date);
     var eventTime= $("<li class='list-group-item'>");
     eventTime.text(events.time);
     var eventVenue = $("<li class='list-group-item'>");
     eventVenue.text(events.venue);
+
+    // NEEDS TO BE CHANGED TO A CLICKABLE LINK
+    var eventURL = $("<li class='list-group-item'>");
+    eventURL.html("<a href='" + events.link + ">" + events.link + "</a>");
+
    var newUl= $("<ul list-group>");
-   newUl.append(eventName,eventDate,eventTime,eventVenue,eventInfo);
-    var newCard = $("<div class='card' style='width: 18rem;'>");
-    //newCard.attr( );
+   newUl.append(eventName,eventDate,eventTime,eventVenue,eventURL);
+
+   //NEEDS TO BE APPENDED DIRECTLY TO THE DIV, AND IMG NEEDS TO BE "FLOAT LEFT"
+    var newCard = $("<div style='width: 27rem;'>");
+
     newCard.append(eventImage,newUl);
 
     if (type === "Music"){
