@@ -13,7 +13,7 @@ $("#search-btn").on("click", function() {
   $("#sports-results").not("h5").not("p").empty();
 
   var searchCity = $("#search-input").val();
-  var ticketMasterURL = "http://app.ticketmaster.com/discovery/v2/events.json?&size=200&city=" + searchCity + "&apikey=4tfR2LDAXpAcyulcEgARYYEfWZTLHCUQ";
+  var ticketMasterURL = "https://app.ticketmaster.com/discovery/v2/events.json?&size=200&city=" + searchCity + "&apikey=4tfR2LDAXpAcyulcEgARYYEfWZTLHCUQ";
 
   $.ajax({
     url: ticketMasterURL,
@@ -26,6 +26,7 @@ $("#search-btn").on("click", function() {
       if(response._embedded.events.length === 0){
         var noResultsMsg = $("<p>");
         console.log("No Results to Display");
+
         $("#result-section").append(noResultsMsg.text("No Results to Display"));
       } else {
 
