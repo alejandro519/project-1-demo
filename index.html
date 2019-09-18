@@ -12,49 +12,34 @@
   <!-- Google fonts css stylesheet -->
   <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Lato:100,300,400,700,900|Raleway:200&display=swap"
     rel="stylesheet">
+    <!-- Animation.css stylesheet -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
   <link rel="stylesheet" href="stylesheets/style.css">
 
   <title>Fanzy</title>
 </head>
-<!-- 
-  #title--screen title
-  #directions--directions for page within jumbotron
-  #search-input---user input in form
-  #search-btn---submit button for search in form
-  class .result-section
-  class .result-name
-  class .result-venue
-  class .result-artist
-  class .result-description
-  class .result-image 
--->
 
 <body>
 
-  <div class="jumbotron">
-    <h1 id="title">Welcome to Touristico!</h1>
-    <div id="back">
-      <!-- Directions for how we plan to have Use interact with the app
+  <div class="jumbotron jumbotron-fluid animated fadeInDown delay-.5 slow">
+    <h1 id="title">For living it up, when you don't know where up is!</h1>
+    <!-- Directions for how we plan to have Use interact with the app
         Change with alterations of functionality! -->
-      <p id="directions">Search any City for family friendly events by typing that City in the search bar below!</p>
-      <hr>
-      <div class="container">
-
-        <form>
-          <div id="search-term">
-            <div class="form-group">
-              <label for="Search Term">Search</label>
-              <input type="text" class="form-control" id="search-input" placeholder="Los Angeles">
-              <button type="submit" id="search-btn" class="btn btn-primary mt-3">Submit</button>
-            </div>
-          </div>
-
+    <p id="directions">Search any City for Music & Sports events nearby by typing in the search bar below!</p>
+    <hr>
+    <form>
+      <div id="search-term">
+        <div class="form-group">
+          <label for="Search Term">Search</label>
+          <input type="text" class="form-control" id="search-input" placeholder="Los Angeles">
+          <button type="submit" id="search-btn" class="btn btn-primary mt-3">Submit</button>
+        </div>
       </div>
-      </form>
-
-    </div>
+    </form>
   </div>
-  </div>
+  <div>
+    <a href="#sports-results">Jump to Sports Events</a>
   </div>
 
   <!-- Results from the even search will dump here -->
@@ -65,42 +50,36 @@
     <div class="main results mt-4" id="result-section">
 
       <!--Sumana - moved the card body div above the image to make it independent of dynamic cards  -->
-        <div class="card-body bg-light">
-          <h5 class="card-title">Music Results</h5>
-          <p class="card-text">See your search results below!</p>
-          <div id="music-results"></div>
-        </div>
+      <div class="card-body animated fadeInUp" id="music-results">
+      <div>
 
-          <!--Sumana - moved the card body div above the image to make it independent of dynamic cards  -->
-          <div class="card-body bg-light">
-            <h5 class="card-title">Sports Results</h5>
-            <p class="card-text">See your search results below!</p>
-            <div id="sports-results"></div>
-          </div>
+      </div>
+
+      </div>
+
+
+      <!--Sumana - moved the card body div above the image to make it independent of dynamic cards  -->
+      <div class="card-body animated fadeInUp " id="sports-results">
+
+      </div>
 
     </div>
-        <!--  -->
 
-        <button type="reset" id="reset-btn" class="btn btn-danger mt-3">Reset Search Results</button>
-
-
-
-
-      <!-- Optional JavaScript -->
-      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-database.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src="javascript/app.js"></script>
-      <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-      <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-database.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="javascript/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
 
 
 </body>
