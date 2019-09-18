@@ -1,6 +1,5 @@
 body{
-    background-color: #96aef0;
-    background-image: url("../images/main.png");
+    background-color: #2d2d2e;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: center;
@@ -8,40 +7,42 @@ body{
 .container{
 }
 .jumbotron{
-
+    color: #ebebeb;
+    width: 100%;
     padding-top: 10px;
     padding-left: 10%;
     padding-right: 10%;
     background: none;
-    margin: 0px;
-
+    margin-top: 10px;
     border-bottom: solid;
-    box-shadow: 2px 2px 4px #000000;
+    border-radius: 0;
+    text-align: center;
     align-content: center;
-    
+    margin-right: 0;
+    margin-left: 0;
 }
 #search-term{
-    width: 45%;
+    width: 50%;
     margin-top: 20px;
     padding: 10px;
-    margin-left: 0px;
-
-
+    margin: auto;
 }
 
 .main{
     margin: auto;
     background: none;
-    box-shadow: 2px 2px 4px #000000;
-
+    text-align: center;
+    align-content: center;
 }
+
 #title{
-font-family: 'Dancing Script', cursive;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 font-size: 65px;
+font-weight: lighter;
 
 }
 #directions{
-font-family: 'Lato', sans-serif;
+    font-family: 'Lato', sans-serif;
 font-size: 20px;
 font-weight: bolder;
 padding-top: 5px;
@@ -51,14 +52,75 @@ text-align: center;
 
 }
 #back{
-background-color: rgba(179, 255, 0, 0.507);
-border: solid;
-border-radius: 10px;
-padding: 0px;
-box-shadow: 2px 2px 4px #000000;
+    background-color: rgba(179, 255, 0, 0.507);
+    border: solid;
+    padding: 0px;
+    box-shadow: 2px 2px 4px #000000;
 }
 
 #results-section{
+    margin: auto;
+    padding: 10px;
+    
+}
+#music-results{
+    background-color: rgba(0, 247, 255, 0.404);
+
+}
+#sports-results{
+    background-color: rgba(0, 247, 255, 0.404);
+
+}
+.link-result{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #3d475a;
+}
+.link-result.hover{
+
+}
+ul{
+    background: none;
+    padding: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.card{
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+    align-content: center;
+    border: solid;
+    border-radius: 10px;
+    border-block-color: #ebebeb;
+    font-family: 'Lato', sans-serif;
+    color: #ebebeb;
+    box-shadow: 2px 2px 4px #000000;
+    background-color: #505052;
+    
+}
+.list-group-item{
+    border: none;
+    
+}
+.li-card-last{
+    overflow: auto;
+    margin-bottom: 10px;
+    background: none;
+
+}
+.li-card{
+    overflow: auto;
+    background: none;
+
+}
+.info-card{
+    overflow: auto;
+    background: none;
+    height: 50px;
+
+
 
 }
 #reset-btn{

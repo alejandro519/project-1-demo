@@ -37,13 +37,11 @@ $("#search-btn").on("click", function() {
         }
         
         if (response._embedded.events[i].classifications[0].segment.name === "Music") {
-          console.log("is music");
           music.push(newEvent);
           display(music, "Music");
         } 
         
         if (response._embedded.events[i].classifications[0].segment.name === "Sports") {
-          console.log("is sports");
           sports.push(newEvent);
           display(sports, "Sports");
           
@@ -67,21 +65,24 @@ if(events.length === 0){
 } else {
   for(var s=0; s < events.length; s++) {
     
-    var eventImage = $("<img class='card-img-top'>");// add source and alttext
-    eventImage.attr("src",events[s].image);
+    var eventImage = $("<img class='card-img-top image-result'>");// add source and alttext
+    eventImage.attr("src", events[s].image);
     eventImage.attr("alt","image text");
-    var eventName = $("<li class='list-group-item'>");
+    var eventName = $("<li class='list-group-item li-card'>");
     eventName.text(events[s].name);
-    var eventInfo = $("<li class='list-group-item'>");
+    var eventInfo = $("<li class='list-group-item info-card'>");
     eventInfo.text(events[s].info);
-    var eventDate= $("<li class='list-group-item'>");
+    var eventDate = $("<li class='list-group-item li-card'>");
     eventDate.text(events[s].date);
-    var eventTime= $("<li class='list-group-item'>");
+    var eventTime = $("<li class='list-group-item li-card'>");
     eventTime.text(events[s].time);
-    var eventVenue = $("<li class='list-group-item'>");
+    var eventVenue = $("<li class='list-group-item li-card-last'>");
     eventVenue.text(events[s].venue);
+    var eventLink = $("<a class='card-link link-result'>Learn More!</a>");
+    eventLink.attr("href", events[s].link);
+    eventLink.html();
    var newUl= $("<ul list-group>");
-   newUl.append(eventName,eventInfo,eventDate,eventTime,eventVenue);
+   newUl.append(eventName,eventInfo,eventDate,eventTime,eventVenue,eventLink);
     var newCard = $("<div class='card' style='width: 18rem;'>");
     //newCard.attr( );
     newCard.append(eventImage,newUl);
