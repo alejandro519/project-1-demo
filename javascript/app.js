@@ -79,7 +79,7 @@ function display(events, type) {
   var eventImage = $("<img class='card-img-top '>");
   eventImage.attr("src", events.imageURL);
   eventImage.attr("alt", "image text");
-  var eventName = $("<li class='list-group-item li-card>");
+  var eventName = $("<li class='list-group-item li-card'>");
   eventName.text(events.name);
   var eventDate = $("<li class='list-group-item li-card'>");
   eventDate.text(events.date);
