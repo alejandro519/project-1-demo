@@ -51,12 +51,7 @@ padding-right: 10%;
 text-align: center;
 
 }
-#back{
-    background-color: rgba(179, 255, 0, 0.507);
-    border: solid;
-    padding: 0px;
-    box-shadow: 2px 2px 4px #000000;
-}
+
 
 #results-section{
     margin: auto;
@@ -64,11 +59,11 @@ text-align: center;
     
 }
 #music-results{
-    background-color: rgba(0, 247, 255, 0.404);
+    background-color: rgba(178, 178, 179, 0.164);
 
 }
 #sports-results{
-    background-color: rgba(0, 247, 255, 0.404);
+    background-color: rgba(178, 178, 179, 0.164);
 
 }
 .link-result{
