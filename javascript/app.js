@@ -115,7 +115,7 @@ function display(events, type) {
     var top = $('#stick-here').offset().top;
     if (window_top > top) {
       $('.links').addClass('stick');
-      $('#stick-here').height($('.links').outerHeight());
+      $('#stick-here').height($(0).outerHeight());
 
     } else {
       $('.link').removeClass('stick');

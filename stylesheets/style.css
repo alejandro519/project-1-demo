@@ -1,7 +1,9 @@
 body{
-    background-position: center;
-    background-color: ;
+    background-color: #000000;
+    font-family: 'Raleway', sans-serif;
+
 }
+
 .jumbotron{
     color: #ebebeb;
     width: 100%;
@@ -10,13 +12,18 @@ body{
     padding-right: 10%;
     padding-bottom: 10px;
     background: none;
-    margin-top: 10px;
+    margin-top: 80px;
+    margin-bottom: 0px;
     border-bottom: solid;
     border-radius: 0;
     text-align: center;
     align-content: center;
     margin-right: 0;
     margin-left: 0;
+    background-image: url('../images/crowd.jpg');
+    background-position: bottom;
+    background-repeat: no-repeat;
+
 }
 #search-term{
     width: 50%;
@@ -24,18 +31,26 @@ body{
     padding: 10px;
     margin: auto;
 }
+#search-input{
+    margin-top: 5px;
+}
 .block {
     display: block;
+    position: fixed;
+    top: 0;
     height: 90px;
     margin-left: 0px;
     width: 100%;
     background-color: #343a40;
+    margin-top: 0;
+    z-index: -1;
     float: left;
 }
 #title1{
 font-family: 'Lobster', cursive;
 font-size: 60px;
 color: white;
+padding-left: 5%;
 /* text-shadow:
 -1px -1px 0 white,
 1px -1px 0 white,
@@ -55,21 +70,25 @@ hr{
 }
 
 #title{
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-font-size: 65px;
-font-weight: lighter;
-
+font-size: 50px;
+color: #ffffff;
+text-shadow: 2px 2px 4px #939597;
+/* 
+text-shadow:
+-1px -1px 0 white,
+1px -1px 0 white,
+-1px 1px 0 white,
+1px 1px 0 white; */
 }
 #directions{
-font-family: 'Lato', sans-serif;
 font-size: 20px;
-padding-bottom: 5px;
-font-weight: bolder;
+padding-bottom: 0px;
 padding-top: 0px;
 padding-left: 10%;
 padding-right: 10%;
 text-align: center;
 margin-top: 5px;
+margin-bottom: 0px;
 }
 #results-section{
     margin: auto;
@@ -84,10 +103,10 @@ margin-top: 5px;
     position: sticky;
     text-align: center;
     align-content: center;
+    z-index: 99;
 
 }
 .links.stick {
-    margin-top: 0;
     top: 0;
     z-index: 9999;
 }
@@ -96,7 +115,7 @@ margin-top: 5px;
     padding: 10px;
     border-radius: 10px;
     background-color: #939597;
-    color: #000000;
+    color: #ebebeb;
     box-shadow: 2px 2px 4px #000000;
 
 }
@@ -105,7 +124,7 @@ margin-top: 5px;
     padding: 10px;
     border-radius: 10px;
     background-color: #939597;
-    color: #000000;
+    color: #ebebeb;
     box-shadow: 2px 2px 4px #000000;
 
 }
@@ -136,6 +155,12 @@ ul{
 form{
     padding: top;
     margin-top: 0;
+    line-height: 1.2px;
+    font-family: 'Lato', sans-serif;
+}
+placeholder{
+    text-align: center;
+
 }
 .card{
     display: inline-block;
